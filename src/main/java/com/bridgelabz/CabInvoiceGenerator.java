@@ -8,5 +8,12 @@ public class CabInvoiceGenerator {
     public static double calculateFare(double distance,int time){
       return distance * MINIMUM_COST_PER_KILOMETER + time * COST_PER_TIME;
     }
+    public  double calculateFare(Ride[] rides) {
+        double totalFare = 0;
+        for (Ride ride : rides) {
+            totalFare += this.calculateFare(ride.distance, (int) ride.time);
+        }
+        return totalFare;
+    }
 
 }
